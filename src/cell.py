@@ -35,3 +35,9 @@ class Cell:
 
         if self.walls["left"]:
             pygame.draw.line(window, WALL_COLOR, (x, y + CELL_SIZE), (x, y), 2)
+
+    def fill(self, window, color):
+        x = self.col * CELL_SIZE
+        y = self.row * CELL_SIZE
+        rect = pygame.Rect(x, y, CELL_SIZE, CELL_SIZE)
+        pygame.draw.rect(window, color, rect)
