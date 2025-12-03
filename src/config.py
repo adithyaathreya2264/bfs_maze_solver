@@ -1,5 +1,5 @@
 # Screen settings
-WINDOW_WIDTH = 800
+WINDOW_WIDTH = 725
 WINDOW_HEIGHT = 800
 FPS = 60
 
@@ -20,3 +20,9 @@ VISITED_COLOR = (135, 206, 250)   # Light blue for BFS exploration
 PATH_COLOR = (255, 255, 0)        # Yellow for final path
 START_COLOR = (0, 255, 0)         # Green
 END_COLOR = (255, 0, 0)           # Red
+
+UI_BAR_HEIGHT = 80
+
+MAZE_HEIGHT = WINDOW_HEIGHT - UI_BAR_HEIGHT
+CELL_SIZE = (WINDOW_HEIGHT - UI_BAR_HEIGHT) // ROWS
+
