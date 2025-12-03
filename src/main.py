@@ -43,6 +43,9 @@ def fill_path(window, path):
     for cell in path:
         cell.fill(window, PATH_COLOR)
 
+def reset_bfs_state():
+    return [], [], 0, False, False
+
 
 def main():
     window = init_pygame()
@@ -57,12 +60,8 @@ def main():
     end = grid[ROWS - 1][COLS - 1]
 
     # Animation state variables
-    exploration_order = []
-    path = []
+    exploration_order, path, bfs_step, is_animating_bfs, is_showing_path = reset_bfs_state()
 
-    bfs_step = 0
-    is_animating_bfs = False
-    is_showing_path = False
 
     running = True
     while running:
@@ -80,6 +79,14 @@ def main():
                     bfs_step = 0
                     is_animating_bfs = True
                     is_showing_path = False
+                if event.key == pygame.K_r:
+                    grid = create_grid()
+                    grid = generate_maze(grid)
+                    start = grid[0][0]
+                    end = grid[ROWS - 1][COLS - 1]
+                    exploration_order, path, bfs_step, is_animating_bfs, is_showing_path = reset_bfs_state()
+                if event.key == pygame.K_c:
+                    exploration_order, path, bfs_step, is_animating_bfs, is_showing_path = reset_bfs_state()
 
         # ---------------- DRAWING ----------------
         window.fill(BACKGROUND_COLOR)
