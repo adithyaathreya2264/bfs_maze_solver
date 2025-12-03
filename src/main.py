@@ -8,6 +8,7 @@ from config import (
 
 from cell import Cell
 from maze_generator import generate_maze
+from bfs_solver import bfs_solve
 
 
 def init_pygame():
@@ -40,6 +41,10 @@ def main():
     # Generate maze using DFS recursive backtracking
     grid = generate_maze(grid)
 
+    # Define start and end cells
+    start = grid[0][0]
+    end = grid[ROWS - 1][COLS - 1]
+
     running = True
     while running:
         clock.tick(FPS)
@@ -49,7 +54,18 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
 
-            # Keyboard logic for BFS/Reset will be added in later phases
+            # Temporary BFS trigger
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_s:
+                    exploration_order, path = bfs_solve(grid, start, end)
+                    print("BFS complete!")
+                    print("Visited:", len(exploration_order), "cells")
+                    print("Path length:", len(path))
+
+                # Regenerate maze later (Phase 6)
+                # if event.key == pygame.K_r:
+                #     grid = create_grid()
+                #     grid = generate_maze(grid)
 
         # Fill background
         window.fill(BACKGROUND_COLOR)
@@ -57,7 +73,6 @@ def main():
         # Draw the generated maze
         draw_grid(window, grid)
 
-        # Update frame
         pygame.display.update()
 
     pygame.quit()
