@@ -3,7 +3,8 @@ import sys
 
 from config import (
     WINDOW_WIDTH, WINDOW_HEIGHT, FPS,
-    BACKGROUND_COLOR, ROWS, COLS
+    BACKGROUND_COLOR, ROWS, COLS,
+    VISITED_COLOR, PATH_COLOR
 )
 
 from cell import Cell
@@ -31,46 +32,73 @@ def draw_grid(window, grid):
             cell.draw(window)
 
 
+def fill_explored(window, cells, step):
+    """Fill all BFS visited cells up to current step."""
+    for i in range(step):
+        cells[i].fill(window, VISITED_COLOR)
+
+
+def fill_path(window, path):
+    """Fill final BFS path."""
+    for cell in path:
+        cell.fill(window, PATH_COLOR)
+
+
 def main():
     window = init_pygame()
     clock = pygame.time.Clock()
 
     # Build grid
     grid = create_grid()
-
-    # Generate maze using DFS recursive backtracking
     grid = generate_maze(grid)
 
     # Define start and end cells
     start = grid[0][0]
     end = grid[ROWS - 1][COLS - 1]
 
+    # Animation state variables
+    exploration_order = []
+    path = []
+
+    bfs_step = 0
+    is_animating_bfs = False
+    is_showing_path = False
+
     running = True
     while running:
         clock.tick(FPS)
 
-        # Handle window events
+        # ---------------- EVENT HANDLING ----------------
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
 
-            # Temporary BFS trigger
+            # Start BFS animation
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_s:
+                if event.key == pygame.K_s and not is_animating_bfs:
                     exploration_order, path = bfs_solve(grid, start, end)
-                    print("BFS complete!")
-                    print("Visited:", len(exploration_order), "cells")
-                    print("Path length:", len(path))
+                    bfs_step = 0
+                    is_animating_bfs = True
+                    is_showing_path = False
 
-                # Regenerate maze later (Phase 6)
-                # if event.key == pygame.K_r:
-                #     grid = create_grid()
-                #     grid = generate_maze(grid)
-
-        # Fill background
+        # ---------------- DRAWING ----------------
         window.fill(BACKGROUND_COLOR)
 
-        # Draw the generated maze
+        # Animate BFS exploration
+        if is_animating_bfs:
+            if bfs_step < len(exploration_order):
+                bfs_step += 1
+            else:
+                is_animating_bfs = False
+                is_showing_path = True  # show path after BFS completes
+
+            fill_explored(window, exploration_order, bfs_step)
+
+        # Draw final path
+        if is_showing_path:
+            fill_path(window, path)
+
+        # Draw maze walls on top of colored cells
         draw_grid(window, grid)
 
         pygame.display.update()
