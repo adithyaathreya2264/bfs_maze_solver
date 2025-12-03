@@ -48,15 +48,15 @@ bfs_maze_solver/
 - BFS — shortest path search
 
 ## 🔧 Installation & Setup
-- **1. Clone the repository**
+**1. Clone the repository**
 - git clone <your-repo-url>
 - cd bfs_maze_solver
 
-- **2. Create a virtual environment (Windows)**
+**2. Create a virtual environment (Windows)**
 - python -m venv env
 - env\Scripts\activate
 
-- **3. Install dependencies**
+**3. Install dependencies**
 - pip install pygame
 
 ## ▶ Running the Project
@@ -64,29 +64,29 @@ bfs_maze_solver/
 - python src/main.py
 
 ## 🎮 Controls & UI Buttons
-- **On-screen buttons**
+**On-screen buttons**
 - **Start BFS** → animate BFS from start to end
 - **Regenerate** → generate a brand-new random maze
 - **Clear Vis** → clear BFS colors without rebuilding maze
 
-- **Node indicators**
+**Node indicators**
 - 🟩 Green = Start cell
 - 🟥 Red = End cell
 
 ## ✨ How It Works
-- **Maze Generation (DFS)**
+**Maze Generation (DFS)**
 - Starts at a random cell
 - Carves passages by removing walls
 - Backtracks when no unvisited neighbors
 - Produces a perfect maze (one unique path between cells)
 
-- **BFS Solver**
+  **BFS Solver**
 - Expands outward layer by layer
 - Tracks visited order for animation
 - Reconstructs shortest path to the goal
 - Path is drawn after BFS finishes
 
-- **Visualization**
+**Visualization**
 - Light blue → visited BFS cells
 - Yellow → shortest path
 - Maze walls always drawn on top
