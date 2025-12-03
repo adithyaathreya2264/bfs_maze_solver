@@ -22,6 +22,7 @@ A visual maze generator and solver built using DFS (maze generation) + BFS (shor
 - UI buttons
 
 ## 📁 Project Structure
+```text
 bfs_maze_solver/
 │
 ├── assets/                     # optional (icons, fonts, images)
@@ -40,6 +41,7 @@ bfs_maze_solver/
 ├── requirements.txt            # pygame
 ├── .gitignore
 └── README.md
+```
 
 ## 🛠 Tech Stack
 - Python 3
