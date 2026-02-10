@@ -1,7 +1,7 @@
-# 🧩 BFS Maze Solver (Python + PyGame)
+# BFS Maze Solver (Python + PyGame)
 A visual maze generator and solver built using DFS (maze generation) + BFS (shortest-path search) with smooth animations and interactive UI buttons.
 
-## 🚀 Features
+## Features
 - **Random Maze Generation**
 - DFS Recursive Backtracking algorithm
 - New maze created instantly with one click
@@ -21,7 +21,7 @@ A visual maze generator and solver built using DFS (maze generation) + BFS (shor
 - Visualization
 - UI buttons
 
-## 📁 Project Structure
+## Project Structure
 ```text
 bfs_maze_solver/
 │
@@ -43,7 +43,7 @@ bfs_maze_solver/
 └── README.md
 ```
 
-## 🛠 Tech Stack
+## Tech Stack
 - Python 3
 - PyGame — rendering, animation, UI
 - DFS — maze generation
