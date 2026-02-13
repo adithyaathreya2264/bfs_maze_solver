@@ -49,7 +49,7 @@ bfs_maze_solver/
 - DFS — maze generation
 - BFS — shortest path search
 
-## 🔧 Installation & Setup
+## Installation & Setup
 **1. Clone the repository**
 - git clone <your-repo-url>
 - cd bfs_maze_solver
@@ -61,11 +61,11 @@ bfs_maze_solver/
 **3. Install dependencies**
 - pip install pygame
 
-## ▶ Running the Project
+## Running the Project
 - Inside the project directory, with environment activated:
 - python src/main.py
 
-## 🎮 Controls & UI Buttons
+## Controls & UI Buttons
 **On-screen buttons**
 - **Start BFS** → animate BFS from start to end
 - **Regenerate** → generate a brand-new random maze
